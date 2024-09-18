@@ -7,10 +7,12 @@ import {
 } from "@lib/schema";
 import { NextRequest, NextResponse } from "next/server";
 
+
+
+
 export const GET = async (request: NextRequest) => {
   const program = request.nextUrl.searchParams.get("program");
   const studentId = request.nextUrl.searchParams.get("studentId");
-
   //validate query parameters (if provided)
   const parseResult = zStudentGetParam.safeParse({
     program,
@@ -37,6 +39,9 @@ export const GET = async (request: NextRequest) => {
   }
   return NextResponse.json({ ok: true, students: filtered });
 };
+
+
+
 
 export const POST = async (request: NextRequest) => {
   const body = await request.json();
